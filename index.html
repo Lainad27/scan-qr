@@ -61,7 +61,7 @@
 <input type="file" id="file-selector">
 <b>Detected QR code: </b>
 <span id="file-qr-result">None</span>
-
+<h1>Paste anywhere for a QR render!</h1>
 <script type="module">
     import QrScanner from "./qr-scanner.min.js";
 
@@ -80,8 +80,9 @@
     // ####### Paste Option #######
         
    function appendPastedQR(QR){
-       var s=document.createElement('p');
+       var s=document.createElement('a');
        s.innerHTML='Pasted QR '+QR;
+       s.href='Pasted QR '+QR;
        document.body.appendChild(s);
    }
    
