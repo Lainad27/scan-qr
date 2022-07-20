@@ -83,12 +83,13 @@
         
    function appendPastedQR(QR){
        var s=document.createElement('p');
-       s.innerHTML=QR;
-       document.body.appendChild('Pasted QR '+QR);
+       s.innerHTML='Pasted QR '+QR;
+       document.body.appendChild(s);
    }
    
     document.onpaste = function(event){ // (Modified Nick Rattalack)
   var items = (event.clipboardData || event.originalEvent.clipboardData).items;
+  let index = null;
   for (index in items) {
     var item = items[index];
     if (item.kind === 'file') {
