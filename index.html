@@ -80,9 +80,13 @@
     // ####### Paste Option #######
         
    function appendPastedQR(QR){
-       var s=document.createElement('a');
+       var s=document.createElement('p');
        s.innerHTML='Pasted QR '+QR;
-       s.href='Pasted QR '+QR;
+       document.body.appendChild(s);
+   }
+    function appendLinkPastedQR(QR){
+       var s=document.createElement('p');
+       s.innerHTML='Pasted QR is <a href=' +QR + '>' + QR + '</a>';
        document.body.appendChild(s);
    }
    
@@ -94,7 +98,7 @@
     if (item.kind === 'file') {
       var blob = item.getAsFile();
       QrScanner.scanImage(blob, { returnDetailedScanResult: true })
-            .then(result => appendPastedQR(result.data))
+            .then(result => appendLinkPastedQR(result.data))
             .catch(e =>appendPastedQR('not detected.'));
     }
   }
